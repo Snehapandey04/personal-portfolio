@@ -1,3 +1,32 @@
+// Toggle Light and Dark Mode
+const toggleSwitch = document.querySelector('#checkbox');
+const currentTheme = localStorage.getItem('theme');
+
+if (currentTheme) {
+    document.body.classList.add(currentTheme);
+
+    if (currentTheme === 'dark-mode') {
+        toggleSwitch.checked = true;
+    }
+}
+
+toggleSwitch.addEventListener('change', () => {
+    if (toggleSwitch.checked) {
+        document.body.classList.add('dark-mode');
+        document.body.classList.remove('light-mode');
+        localStorage.setItem('theme', 'dark-mode');
+    } else {
+        document.body.classList.add('light-mode');
+        document.body.classList.remove('dark-mode');
+        localStorage.setItem('theme', 'light-mode');
+    }
+});
+
+
+
+
+
+
 let menuIcon=document.querySelector('#menu-icon');
 let navbar=document.querySelector('.navbar');
 
@@ -45,7 +74,7 @@ ScrollReveal().reveal('.home-content h1,.about-img',{origin:'left'});
 ScrollReveal().reveal('.home-content p,.about-content',{origin:'right'});
 
 const typed = new Typed('.multiple-text',{
-    strings:['MCA Student At JSS Noida','Java Full Stack Developer'],
+    strings:['MCA Student At JSS Noida','Java Developer'],
     typeSpeed:110,
     backSpeed:100,
     backDelay:1000,
